@@ -101,6 +101,9 @@ static void addFromFstab(std::list<std::string>* paths, PathTypes path_type) {
                                                                fs_mgr_free_fstab);
     struct fstab_rec *prev_rec = NULL;
 
+    if (!fstab)
+        return;
+
     for (int i = 0; i < fstab->num_entries; i++) {
         auto fs_type = std::string(fstab->recs[i].fs_type);
         /* Skip raw partitions */
